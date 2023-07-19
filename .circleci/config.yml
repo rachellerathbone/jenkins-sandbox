@@ -19,6 +19,6 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
-      post-steps:
-            - jira/notify
+      - build:
+          post-steps:
+                - jira/notify
