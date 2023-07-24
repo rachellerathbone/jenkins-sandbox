@@ -4,6 +4,7 @@ pipeline {
          stage('build') {
              steps {
                 echo 'Building..'
+                throw new Error('help')
              }
              post {
                  always {
