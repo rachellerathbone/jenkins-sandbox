@@ -29,7 +29,6 @@ pipeline {
                 echo 'Deploying to Production from main...'
             }
             post {
-                throw new Error('help!')
                 always {
                     jiraSendDeploymentInfo environmentId: 'us-prod-1', environmentName: 'us-prod-1', environmentType: 'production'
                 }
