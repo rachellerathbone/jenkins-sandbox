@@ -1,3 +1,0 @@
-# jenkins-sandbox
-blah
-sdjhbfsdbsfdsfdsdfsfsdsfsdf
