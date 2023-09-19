@@ -16,7 +16,7 @@ jobs:
     name: Deploy to Staging
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: chrnorm/deployment-action@releases/v1
+      - uses: chrnorm/deployment-action@releases/v2
         name: Create staging deployment
         id: deployment_staging
         with:
@@ -26,7 +26,7 @@ jobs:
       - name: Running staging deployment
         run: |
           echo Deploying to staging...
-      - uses: chrnorm/deployment-status@releases/v1
+      - uses: chrnorm/deployment-status@releases/v2
         name: Update staging deployment
         with:
           token: "${{ github.token }}"
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-20.04
     name: Deploy to Production
     steps:
-      - uses: chrnorm/deployment-action@releases/v1
+      - uses: chrnorm/deployment-action@releases/v2
         name: Create prod deployment
         id: deployment_prod
         with:
