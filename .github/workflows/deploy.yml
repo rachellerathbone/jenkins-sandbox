@@ -21,7 +21,6 @@ jobs:
         id: deployment_staging
         with:
           token: "${{ github.token }}"
-          target_url: http://my-cool-app.com
           environment: Staging
       - name: Running staging deployment
         run: |
@@ -30,9 +29,7 @@ jobs:
         name: Update staging deployment
         with:
           token: "${{ github.token }}"
-          target_url: http://my-cool-app.com
           state: "success"
-          deployment_id: ${{ steps.deployment_staging.outputs.deployment_id }}
   deploy-to-prod:
     runs-on: ubuntu-20.04
     name: Deploy to Production
@@ -42,7 +39,6 @@ jobs:
         id: deployment_prod
         with:
           token: "${{ github.token }}"
-          target_url: http://my-cool-app.com
           environment: Production
       - name: Running production deployment
         run: |
@@ -51,9 +47,7 @@ jobs:
         name: Update prod deployment
         with:
           token: "${{ github.token }}"
-          target_url: http://my-cool-app.com
           state: "success"
-          deployment_id: ${{ steps.deployment_prod.outputs.deployment_id }}
   deploy-to-random-env:
     runs-on: ubuntu-20.04
     name: Deploy to random env
@@ -63,7 +57,6 @@ jobs:
         id: deployment_random
         with:
           token: "${{ github.token }}"
-          target_url: http://my-cool-app.com
           environment: Random env
       - name: Running random env deployment
         run: |
@@ -74,4 +67,3 @@ jobs:
           token: "${{ github.token }}"
           target_url: http://my-cool-app.com
           state: "success"
-          deployment_id: ${{ steps.deployment_random.outputs.deployment_id }}
