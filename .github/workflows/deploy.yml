@@ -16,7 +16,7 @@ jobs:
     name: Deploy to Staging
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: chrnorm/deployment-action@releases/v2
+      - uses: actions/checkout@v3
         name: Create staging deployment
         id: deployment_staging
         with:
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-20.04
     name: Deploy to Production
     steps:
-      - uses: chrnorm/deployment-action@releases/v2
+      - uses: actions/checkout@v3
         name: Create prod deployment
         id: deployment_prod
         with:
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-20.04
     name: Deploy to random env
     steps:
-      - uses: chrnorm/deployment-action@releases/v1
+      - uses: actions/checkout@v3
         name: Create random env deployment
         id: deployment_random
         with:
