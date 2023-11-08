@@ -11,59 +11,25 @@ on: [push]
 jobs:
   # This workflow contains a single job called "build"
   deploy-to-staging:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
-    name: Deploy to Staging
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v3
         name: Create staging deployment
-        id: deployment_staging
-        with:
-          token: "${{ github.token }}"
-          environment: Staging
-      - name: Running staging deployment
-        run: |
-          echo Deploying to staging...
-      - uses: chrnorm/deployment-status@releases/v2
-        name: Update staging deployment
-        with:
-          token: "${{ github.token }}"
-          state: "success"
-  deploy-to-prod:
-    runs-on: ubuntu-20.04
-    name: Deploy to Production
-    steps:
-      - uses: actions/checkout@v3
-        name: Create prod deployment
-        id: deployment_prod
-        with:
-          token: "${{ github.token }}"
-          environment: Production
-      - name: Running production deployment
-        run: |
-          echo Deploying to production...
-      - uses: chrnorm/deployment-status@releases/v1
-        name: Update prod deployment
-        with:
-          token: "${{ github.token }}"
-          state: "success"
-  deploy-to-random-env:
-    runs-on: ubuntu-20.04
-    name: Deploy to random env
-    steps:
-      - uses: actions/checkout@v3
-        name: Create random env deployment
-        id: deployment_random
-        with:
-          token: "${{ github.token }}"
-          environment: Random env
-      - name: Running random env deployment
-        run: |
-          echo Deploying to random env...
-      - uses: chrnorm/deployment-status@releases/v1
-        name: Update random env deployment
+        id: deploy-to-staging
         with:
           token: "${{ github.token }}"
           target_url: http://my-cool-app.com
-          state: "success"
+          environment: Staging
+
+  deploy-to-random-env:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+        name: Create staging deployment
+        id: deploy-to-random-env
+        with:
+          token: "${{ github.token }}"
+          target_url: http://my-cool-app.com
+          environment: any
