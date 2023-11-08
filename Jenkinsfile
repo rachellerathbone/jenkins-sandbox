@@ -21,7 +21,7 @@ pipeline {
                  }
              }
          }
-         stage('deploy to prof') {
+         stage('deploy to prod') {
             when {
                 branch 'main'
             }
